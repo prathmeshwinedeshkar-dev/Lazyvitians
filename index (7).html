@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIT Pune Campus Explorer — First-Year Survival Guide</title>
+<meta name="description" content="Student-built guide to VIT Pune clubs, fests, events and resources.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VIT Pune Campus Explorer — First-Year Survival Guide">
+<meta property="og:description" content="Student-built guide to VIT Pune clubs, deadlines and academic windows. Not official.">
+<meta property="og:image" content="https://prathmeshwinedeshkar-dev.github.io/VIT-EXPLORER/icon-512.png">
+<meta name="theme-color" content="#0d0b12">
+<link rel="manifest" href="manifest.json" id="manifestLink">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#clubs">Skip to content</a>
+<header class="nav">
+  <a class="logo" href="#top">VIT<span>Pune</span> Explorer</a>
+  <nav aria-label="Main"><a href="#vibe">Vibe check</a><a href="#clubs">Clubs</a><a href="#events">Events</a><a href="#deadlines">Deadlines</a><a href="#calendar">Calendar</a><a href="#resources">Resources</a><a href="#campus">Campus</a><a href="#faq">FAQ</a></nav>
+  <div class="nav-actions">
+    <a class="btn small" href="#plan">My Plan <span id="planCount" class="count">0</span></a>
+    <button type="button" class="btn small ghost" id="themeBtn" aria-label="Toggle light or dark theme">◐</button>
+  </div>
+</header>
+
+<noscript><p class="empty">This guide needs JavaScript. Official information: <a href="https://www.vit.edu">vit.edu</a>.</p></noscript>
+<main id="top">
+<section class="hero">
+  <span class="sticker">Student-built · not official</span>
+  <h1>Explore VIT Pune Like a Pro.</h1>
+  <p class="sub">Clubs. Fests. Events. Resources. Everything a first-year needs to survive and shine at VIT Pune.</p>
+  <div class="cta"><a class="btn primary" href="#vibe">Find my club</a><a class="btn" href="#clubs">Browse all clubs</a><button type="button" class="btn ghost" id="surprise">Surprise me</button></div>
+  <div class="searchbar"><label for="search" class="sr">Search</label>
+    <input id="search" type="search" placeholder="Try “robotics”, “hackathon”, “library”…" autocomplete="off"><kbd>/</kbd></div>
+  <div class="bento" role="group" aria-label="Data at a glance">
+    <div class="tile t1"><b id="hClubs">–</b><span>clubs listed</span></div><div class="tile t2"><b id="hVerified">–</b><span>with source evidence</span></div>
+    <div class="tile t3"><b id="hOpen">–</b><span>verified open deadlines</span></div><div class="tile t4"><b id="hToday">–</b><span>today (IST)</span></div>
+  </div>
+  <p class="muted">vit.edu describes 50+ clubs and 100+ activities. This site lists only what we could document, and says so when we couldn’t.</p>
+</section>
+
+<div class="ticker" aria-hidden="true"><div id="tickerTrack"></div></div>
+
+<section id="deadlines" class="wrap"><h2>Recruitment deadlines</h2>
+  <div id="deadlineBanner" class="empty" aria-live="polite"></div><div id="deadlineGrid" class="grid"></div></section>
+
+<section id="calendar" class="wrap"><h2>Academic calendar</h2>
+  <div class="filters"><label>Cohort<select id="cohort"><option>FY</option><option>SY</option><option>TY</option><option>Final Year</option><option>Direct Second Year SEDA</option></select></label>
+  <label>Semester<select id="sem"><option>I</option><option>II</option></select></label></div>
+  <div id="calGrid" class="grid"></div>
+  <p class="muted">Exam entries are windows, not individual subject timetables. See the <a href="https://www.vit.edu/examinations/" target="_blank" rel="noopener noreferrer">official examinations page</a>. Next-semester starts are tentative.</p>
+  <details class="panel"><summary>What we could not verify</summary><ul id="gapList"></ul></details></section>
+
+<section id="vibe" class="wrap"><h2>Vibe check</h2><p class="muted">Three taps. Your answers are matched to club category tags: a simple rule-based suggestion, not a personality test.</p><div id="quizBox" class="quiz"></div></section>
+
+<section class="wrap">
+  <div class="row"><label class="toggle"><input type="checkbox" id="verifiedOnly"> Verified details only</label><button class="btn small ghost" id="clearFilters" type="button">Clear all filters</button></div>
+  <div id="chips" class="chips" role="group" aria-label="Filter by category"></div>
+  <p id="resultInfo" class="muted" aria-live="polite"></p>
+  <div id="noResults" class="empty" hidden>No results found. Try a shorter keyword, or pick “All”.</div>
+</section>
+
+<section id="clubs" class="wrap"><h2>Clubs &amp; teams</h2><div id="clubGrid" class="grid"></div></section>
+
+<section id="events" class="wrap"><h2>Fests &amp; flagship events</h2>
+  <details class="panel"><summary>Event filters</summary>
+    <div id="eventFilters" class="filters"></div>
+    <button type="button" class="btn small ghost" id="resetEv">Reset filters</button></details>
+  <div id="eventGrid" class="grid big"></div></section>
+
+<section id="resources" class="wrap"><h2>Student resources</h2><div id="resGrid" class="grid"></div></section>
+
+<section id="campus" class="wrap"><h2>Campus explorer</h2>
+  <div id="placeChips" class="chips"></div><div id="placeGrid" class="grid"></div></section>
+
+<section id="plan" class="wrap"><h2>My Campus Plan</h2>
+  <div class="row"><button type="button" class="btn small" id="copyPlan">Copy plan</button><button type="button" class="btn small ghost" id="dlPlan">Download plan (.json)</button><span id="planMsg" class="muted" aria-live="polite"></span></div>
+  <div id="planBox" class="grid"></div>
+  <h3>My registrations</h3><div id="regBox" class="grid"></div></section>
+
+<section class="wrap"><h2>Sample student voices <small class="muted">(fictional, for layout)</small></h2><div id="testiGrid" class="grid"></div></section>
+
+<section id="faq" class="wrap"><h2>FAQ</h2><div id="faqList"></div></section>
+
+<section id="importPanel" class="wrap panel"><h3>Import club data (this device only)</h3>
+  <p class="muted">Import a JSON file like <code>{"clubs":[{...}],"events":[...]}</code>. Stays in this browser only. Imported items are labelled and never marked verified. Max 200 KB.</p>
+  <input type="file" id="importFile" aria-label="Import JSON data file" accept=".json,application/json"> <button type="button" class="btn small ghost" id="clearImport">Remove imported data</button>
+  <p id="importMsg" class="muted" aria-live="polite"></p></section>
+</main>
+
+<footer class="wrap foot">
+  <p>Built by <span id="fAuthor"></span>, First-Year Engineering Student, VIT Pune</p>
+  <ul class="flinks"><li><a id="fGit" href="#top" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a id="fLi" href="#top" target="_blank" rel="noopener noreferrer">LinkedIn</a></li><li><a id="fSite" href="#top" target="_blank" rel="noopener noreferrer">Live site</a></li></ul>
+  <p class="muted">This is a student-built informational project. Always verify important updates on the official VIT Pune website (vit.edu). Credits: official VIT Pune sources.</p>
+</footer>
+
+<dialog id="regModal"><form id="regForm" novalidate>
+  <h3>Register interest</h3>
+  <label>Full name<input type="text" name="name" required></label>
+  <label>PRN<input type="text" name="prn" required></label>
+  <label>Email<input name="email" type="email" required></label>
+  <label>Phone (10 digits)<input type="text" name="phone" inputmode="numeric" required></label>
+  <label>Year of study<select name="year"><option>1st</option><option>2nd</option><option>3rd</option><option>4th</option></select></label>
+  <label>Branch<input type="text" name="branch" required></label>
+  <label>Interested event<select name="event" id="regEvent"></select></label>
+  <label>Why do you want to join?<textarea name="why" rows="3" required></textarea></label>
+  <label>Preferred role<select name="role"><option>Participant</option><option>Volunteer</option><option>Organizer</option></select></label>
+  <p class="note muted">This form saves to this device only. It does not register you with any club or organiser; use their official channel for that.</p>
+  <p id="regMsg" class="msg" aria-live="polite"></p>
+  <div class="row"><button class="btn primary" type="submit">Submit</button><button class="btn ghost" type="button" id="regClose">Close</button></div>
+</form></dialog>
+
+<script src="data.js"></script>
+<script src="data-extra.js"></script>
+<script src="data-verified.js"></script>
+<script src="script.js"></script>
+<script src="tracker.js"></script>
+<script src="live.js"></script>
+</body>
+</html>
